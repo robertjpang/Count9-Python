@@ -13,17 +13,16 @@ def NaiveCount(Max, Digit):
         num = x; 
         while (num > 0): 
             iterationCalc = iterationCalc + 1
-            s = str(x) + ":" + str(num) 
-            print (s)
+            #s = str(x) + ":" + str(num) 
+            #print (s)
             if (num != 0) and (num % 10) == int(Digit): 
                 TotalCount = TotalCount + 1
-                s = "Match: " + str(TotalCount)
-                print(s)
+                #s = "Match: " + str(TotalCount)
+                #print(s)
             num = int(num / 10); 
-    print(TotalCount)
-    print(iterationCalc)
     calc = int(n) * math.log(int(n), 10)
-    print(calc)
+    s = "Brute Force - Total Count: " + str(TotalCount) + " IterationCount:" + str(iterationCalc) + " Theoretical Calc: " + str(calc)
+    print(s)
     return;
 
 
@@ -32,6 +31,7 @@ def NaiveCount(Max, Digit):
 
 def CountDigitN(num, dd, depth, sum):
     global recursiveCount
+    global gIterations
     recursiveCount += 1
     count = 0
     weight = 10**depth
@@ -39,13 +39,14 @@ def CountDigitN(num, dd, depth, sum):
     prevsum = sum
     sum += digit*weight
     cweight = 1
-    print(dd)
+    #print(dd)
+    gIterations +=1
     
     if (depth > 1): 
         cweight = (10 ** (depth-1)) * depth    
     
-    s = "CountDigit-" + str(num) + " Digit-" + str(digit) + " Depth-" + str(depth) + " Cweight-" + str(cweight) + " Weight-" + str(weight) + " Sum-" + str(sum)+ " Recursive-" + str(recursiveCount)
-    print(s)
+    #s = "CountDigit-" + str(num) + " Digit-" + str(digit) + " Depth-" + str(depth) + " Cweight-" + str(cweight) + " Weight-" + str(weight) + " Sum-" + str(sum)+ " Recursive-" + str(recursiveCount)
+    #print(s)
 
     # Special case - lowest digit is either 1 or 0
     if (depth == 0): 
@@ -66,7 +67,7 @@ def CountDigitN(num, dd, depth, sum):
     #Non base case. 
     if num >= 10: 
         count += CountDigitN(int(num/10), dd, depth+1, sum)
-    print(count)
+    #print(count)
     recursiveCount -= 1 
     return count
 
@@ -76,10 +77,12 @@ b = input("Enter Digit\n")
 #n = '973'
 #b = '2'
 
-print("Start...")
 NaiveCount(n, b)
+
 gIterations = 0
-CountDigitN(int(n), int(b), 0, 0)
+count = CountDigitN(int(n), int(b), 0, 0)
+s = "Optimized - Count: " + str(count) + " Iterations: " + str(gIterations)
+print(s)
 
 
 
