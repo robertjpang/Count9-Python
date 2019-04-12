@@ -29,6 +29,7 @@ def NaiveCount(Max, Digit):
 
 
 # add my comments
+
 def CountDigitN(num, dd, depth, sum):
     global recursiveCount
     global gIterations
@@ -71,7 +72,7 @@ def CountDigitN(num, dd, depth, sum):
     recursiveCount -= 1 
     return count
 
-n = input("Enter N\n")
+n = input("Enter N - 0 to N\n")
 b = input("Enter Digit\n")
 
 #n = '973'
