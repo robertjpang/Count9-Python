@@ -28,7 +28,7 @@ def NaiveCount(Max, Digit):
 
 
 
-
+# add my comments
 def CountDigitN(num, dd, depth, sum):
     global recursiveCount
     global gIterations
